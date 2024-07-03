@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkvue2_wyymusic"]=self["webpackChunkvue2_wyymusic"]||[]).push([[541],{2541:function(s,t,u){u.r(t),u.d(t,{default:function(){return r}});var e=function(){var s=this,t=s._self._c;return t("div",{staticClass:"loading"},[t("div",{staticClass:"box"},[t("van-loading",{attrs:{color:"#0094ff",vertical:""}},[s._v("加载中...")])],1)])},n=[],a={},i=a,l=u(1656),c=(0,l.A)(i,e,n,!1,null,"73ee8391",null),r=c.exports}}]);
+//# sourceMappingURL=541.08eaa5fa.js.map
