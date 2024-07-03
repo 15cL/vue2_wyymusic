@@ -1,22 +1,41 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
+import store from '../store/index'
 Vue.use(VueRouter)
+
+const fam = VueRouter.prototype.push
+VueRouter.prototype.push = function push (location) {
+  return fam.call(this, location).catch((err) => err)
+}
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: () => import('../views/HomePage.vue')
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/playlist',
+    name: 'playlist',
+    component: () => import('../views/playlist/PlayList.vue')
+  },
+  {
+    path: '/player',
+    name: 'player',
+    component: () => import('../views/player/player.vue'),
+    beforeEnter: async (to, from, next) => {
+      const isPlay = await store.dispatch('player/getSongCheck', to.query.id)
+      if (!isPlay.data.success) {
+        Vue.prototype.$toast(isPlay.data.message)
+        return isPlay.data.message
+      }
+      next()
+    }
+  },
+  {
+    path: '/loading',
+    name: 'loading',
+    component: () => import('../components/loading/loading.vue')
   }
 ]
 
