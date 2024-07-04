@@ -2,11 +2,12 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   publicPath: './',
   transpileDependencies: true,
+
   devServer: {
     proxy: {
       '/api': {
         target: process.env.VUE_APP_BASE_API, // 代理的接口地址
-        changeOrigin: true, // 允许跨域
+        changeOrigin: false, // 允许跨域
         secure: true,
         /** secure说明
          * 若接口地址为http协议，配置secure: false,
