@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const request = axios.create({
   timeout: 20 * 1000,
-  baseUrl: process.env.VUE_APP_BASE_API
+  baseUrl: 'https://api.trtst.com/'
 })
 
 request.interceptors.response.use(
