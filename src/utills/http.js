@@ -4,7 +4,7 @@ const http = {
   get (url, params) {
     const config = {
       method: 'get',
-      url
+      url: String(url).slice(4)
     }
     if (params)config.params = params
     return request(config)
@@ -12,7 +12,7 @@ const http = {
   post (url, params) {
     const config = {
       method: 'post',
-      url
+      url: String(url).slice(4)
     }
     if (params)config.data = params
     return request(config)
