@@ -11,7 +11,7 @@ export default new Vuex.Store({
   state: {
     searchHistory: JSON.parse(sessionStorage.getItem('searchHistory')) || [],
     currentPlayMsg: JSON.parse(window.sessionStorage.getItem('currentPlayMsg')) || null,
-    pageLoadng: false
+    pageLoading: false
   },
   getters: {},
   mutations: {
@@ -49,10 +49,14 @@ export default new Vuex.Store({
       window.sessionStorage.removeItem('currentPlayMsg')
     },
     // 切换隐藏loading
-    toggleLoading (state) {
-      state.pageLoadng = !state.pageLoadng
+    showLoading (state) {
+      console.log('显示')
+      state.pageLoading = true
+    },
+    hideLoading (state) {
+      console.log('隐藏')
+      state.pageLoading = false
     }
-
   },
   actions: {
 

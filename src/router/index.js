@@ -40,9 +40,18 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'hash',
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (store.state.pageLoading) {
+    next('/loading')
+  } else {
+    console.log('nihao')
+    next()
+  }
 })
 
 export default router
